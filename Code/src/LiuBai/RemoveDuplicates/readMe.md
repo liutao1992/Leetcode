@@ -1,3 +1,4 @@
+```aidl
 package LiuBai.RemoveDuplicates;
 
 import java.util.Arrays;
@@ -47,57 +48,59 @@ public class Solution {
         int[] arr = new int[]{1,2,2,2,3,5,7};
 
         /**
-         * 第1轮循环 1,2,2,2,3,5,7
-         * slow = 0  ==> arr[slow] => 1
-         * fast = 1  ==> arr[fast] => 2
-         * 因为 arr[slow] != arr[fast]
-         * 所以 slow + 1 => slow => 2 => arr[slow] => 2
-         * 赋值后数组的变化 ==> 1,2,2,2,3,5,7
+         * 第1轮循环 [1, 2, 2, 2, 3, 5, 7]
+         * slow == 0  ==> arr[0] == 1
+         * fast == 1  ==> arr[1] == 2
+         * 因为 arr[0] != arr[1]
+         * 所以 slow + 1 => slow == 1 => arr[1] == 2
+         *  
+         * 赋值后数组的变化 ==> nums:[1, 2, 2, 2, 3, 5, 7]
          *
-         * 此时 slow与fast下标相同,都为1，且都指向数组元素2 ==> arr[slow] => 2
          *
          * fast ++
          *
-         * 第2轮循环 1,2,2,2,3,5,7
+         * 第2轮循环 nums:[1, 2, 2, 2, 3, 5, 7]
          *
-         * slow == 1  ==> arr[slow] => 2
-         * fast == 2  ==> arr[fast] => 2
+         * slow == 1  ==> arr[1] == 2
+         * fast == 2  ==> arr[2] == 2
          *
-         * 因为 arr[slow] == arr[fast] 所以 fast + 1
+         * 因为 arr[1] == arr[2] 所以 fast + 1 
          *
-         * 第3轮循环 1,2,2,2,3,5,7
+         * 第3轮循环 nums:[1, 2, 2, 2, 3, 5, 7]
          *
-         * slow == 1  ==> arr[slow] => 2
-         * fast == 3  ==> arr[fast] => 2
+         * slow == 1  ==> arr[1] == 2
+         * fast == 3  ==> arr[3] == 2
          *
-         * 因为 arr[slow] == arr[fast] 所以 fast + 1
+         * 因为 arr[1] == arr[3] 所以 fast + 1
          *
-         * 第4轮循环 1,2,2,2,3,5,7
+         * 第4轮循环 nums:[1, 2, 2, 2, 3, 5, 7]
          *
-         * slow == 1  ==> arr[slow] => 2
-         * fast == 4  ==> arr[fast] => 3
+         * slow == 1  ==> arr[1] == 2
+         * fast == 4  ==> arr[4] == 3
          *
-         * 因为 arr[slow] != arr[fast]
-         * 所以 slow + 1 => slow = 2 ==> arr[slow] => 2
-         * 此时赋值：arr[slow] = 3 ==> nums:[1, 2, 3, 2, 3, 5, 7]
+         * 因为 arr[1] != arr[4]
+         * 所以 slow + 1 => slow == 2 ==> arr[2] == 2
+         *                               arr[4] == 3
+         * 此时赋值：arr[2] = arr[4] ==> nums:[1, 2, 3, 2, 3, 5, 7]
          *
-         * 第5轮循环 1, 2, 3, 2, 3, 5, 7
-         *
-         * slow == 2  ==> arr[slow] => 3
-         * fast == 5  ==> arr[fast] => 5
-         *
-         * 因为 arr[slow] != arr[fast]
-         * 所以 slow + 1 => slow => 3 ==> arr[slow] => 2
-         *
-         * 此时赋值：arr[slow] = 5 ==> nums:[1, 2, 3, 5, 3, 5, 7]
-         *
-         * 第6轮循环 1, 2, 3, 5, 3, 5, 7
-         *
-         * slow == 3  ==> arr[slow] => 5
-         * fast == 6  ==> arr[fast] => 6
-         * 因为 arr[slow] != arr[fast]
-         * 所以 slow + 1 => slow => 4 ==> arr[4] => 3
-         * 此时赋值：arr[slow] = 5 ==> nums:[1, 2, 3, 5, 7, 5, 7]
+         * 第5轮循环 nums:[1, 2, 3, 2, 3, 5, 7]
+         * 
+         * slow == 2  ==> arr[2] => 3
+         * fast == 5  ==> arr[4] => 5
+         * 
+         * 因为 arr[2] != arr[5]
+         * 所以 slow + 1 => slow => 3 ==> arr[3] == 2
+         *                               arr[5] == 5
+         * 此时赋值：arr[3] = arr[5] ==> nums:[1, 2, 3, 5, 3, 5, 7]
+         * 
+         * 第6轮循环 nums:[1, 2, 3, 5, 3, 5, 7]
+         * 
+         * slow == 3  ==> arr[3] == 5
+         * fast == 6  ==> arr[6] == 6
+         * 因为 arr[3] != arr[6]
+         * 所以 slow + 1 => slow == 4 ==> arr[4] == 3
+         *                                arr[6] == 7
+         * 此时赋值：arr[4] = arr[6] ==> nums:[1, 2, 3, 5, 7, 5, 7]
          */
 
         int size = Solution.removeDuplicates(arr);
@@ -105,3 +108,5 @@ public class Solution {
     }
 
 }
+
+```
