@@ -100,6 +100,8 @@ public class Solution {
          * 此时赋值：arr[slow] = 5 ==> nums:[1, 2, 3, 5, 7, 5, 7]
          */
 
+        // [1、2、2、5]
+
         int size = Solution.removeDuplicates(arr);
         System.out.println(size);
     }
