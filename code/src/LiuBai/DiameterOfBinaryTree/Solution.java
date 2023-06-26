@@ -1,7 +1,7 @@
 package LiuBai.DiameterOfBinaryTree;
 
 /**
- * 给你一棵二叉树的根节点，返回该树的直径 。
+ * 543：给你一棵二叉树的根节点，返回该树的直径 。
  *
  * 二叉树的 直径 是指树中任意两个节点之间最长路径的长度 。这条路径可能经过也可能不经过根节点 root 。
  *
@@ -28,24 +28,20 @@ public class Solution {
         }
     }
 
-    int res = 0;
-    int height = 0;
+    int maxDiameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        traversal(root);
-        return res;
+        maxDepth(root);
+        return maxDiameter;
     }
 
-    void traversal(TreeNode root) {
+    private int maxDepth(TreeNode root) {
         if (root == null) {
-            return;
+            return 0;
         }
-        height++;
-        if (root.left == null && root.right == null) {
-            res = Math.max(res, height);
-        }
-        traversal(root.left);
-        traversal(root.right);
-        height--;
-    }
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
 
+        maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
 }
