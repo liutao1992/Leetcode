@@ -77,4 +77,18 @@ public class Solution {
         traversal(root.left);
         traversal(root.right);
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(3);
+
+        Solution solution = new Solution();
+        solution.preorderTraversal(root);
+
+        for (Integer i: solution.array) {
+            System.out.println(i);
+        }
+    }
 }

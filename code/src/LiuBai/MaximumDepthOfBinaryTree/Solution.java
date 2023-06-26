@@ -43,8 +43,8 @@ public class Solution {
     int res, deep;
 
     public int maxDepth(TreeNode root) {
-        traverse(root);
-        return res;
+       traverse(root);
+       return res;
     }
 
     /**
@@ -55,12 +55,10 @@ public class Solution {
             return;
         }
         deep++;
-        // 若当前左右节点都为null，则表明已到达叶子节点
         if (root.left == null && root.right == null) {
-            res = Math.max(deep, res);
+            deep = Math.max(res, deep);
         }
         traverse(root.left);
         traverse(root.right);
-        deep--;
     }
 }
