@@ -56,9 +56,10 @@ public class Solution {
         }
         deep++;
         if (root.left == null && root.right == null) {
-            deep = Math.max(res, deep);
+            res = Math.max(res, deep);
         }
         traverse(root.left);
         traverse(root.right);
+        deep--;
     }
 }
