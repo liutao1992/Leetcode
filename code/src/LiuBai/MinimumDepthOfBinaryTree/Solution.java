@@ -38,22 +38,29 @@ public class Solution {
         }
     }
 
-    int deep = 0, res = 0;
-    public int minDepth(TreeNode root) {
-        traversal(root);
-        return res;
-    }
 
-    void traversal(TreeNode root) {
+    public int minDepth(TreeNode root) {
+        // 若根节点为null则返回0
         if (root == null) {
-            return;
+            return 0;
         }
-        deep++;
+
+        // 若当前节点为叶子节点，则返回1
         if (root.left == null && root.right == null) {
-            res = Math.min(deep, res);
+            return 1;
         }
-        traversal(root.left);
-        traversal(root.right);
-        deep--;
+
+        int minValue = Integer.MAX_VALUE;
+        // 遍历左子树
+        if (root.left != null) {
+            minValue = Math.min(minDepth(root.left), minValue);
+        }
+        // 遍历右子树
+        if (root.right != null) {
+            minValue = Math.min(minDepth(root.right), minValue);
+        }
+
+        // 获取左右子树的最小值再加上根节点
+        return minValue + 1;
     }
 }
