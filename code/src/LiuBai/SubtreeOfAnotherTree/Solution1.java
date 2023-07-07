@@ -25,7 +25,7 @@ package LiuBai.SubtreeOfAnotherTree;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * @author liutao
  */
-public class Solution {
+public class Solution1 {
 
     public static class TreeNode {
         int val;
@@ -41,27 +41,35 @@ public class Solution {
     }
 
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        // 若根节点为null，则返回false
         if (root == null) {
             return false;
         }
-        if (isSameTree(root, subRoot)) {
+        // 先从根节点开始比较
+        if(isSameTree(root, subRoot)){
             return true;
         }
-        // 比较左子树与右子树，若其中一方满足条件则返回true
+        // 然后分别比较左右子树
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
 
-    private boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) {
+    /**
+     * 该函数负责比较节点
+     * @param node1
+     * @param node2
+     * @return
+     */
+    private boolean isSameTree(TreeNode node1, TreeNode node2) {
+        // 说明结构相同
+        if (node1 == node2) {
             return true;
         }
-        if (p == null || q == null) {
+        if (node1 == null || node2 == null) {
             return false;
         }
-        if (p.val != q.val) {
+        if (node1.val != node2.val) {
             return false;
         }
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        return isSameTree(node1.left, node2.left) && isSameTree(node1.right, node2.right);
     }
+
 }
