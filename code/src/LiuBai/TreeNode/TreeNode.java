@@ -24,38 +24,40 @@ public class TreeNode {
         if (nums == null || nums.length == 0) {
             return null;
         }
-
+        // 创建根节点
         TreeNode root = new TreeNode(nums[0]);
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         int i = 1;
-
         while (!queue.isEmpty() && i < nums.length) {
-            TreeNode currNode = queue.poll();
-
+            TreeNode curNode = queue.poll();
             if (nums[i] != null) {
-                TreeNode leftNode = new TreeNode(nums[i]);
-                currNode.left = leftNode;
-                queue.offer(leftNode);
+                curNode.left = new TreeNode(nums[i]);
+                queue.offer(curNode.left);
             }
-
             i++;
-
             if (i < nums.length && nums[i] != null) {
-                TreeNode rightNode = new TreeNode(nums[i]);
-                currNode.right = rightNode;
-                queue.offer(rightNode);
+                curNode.right = new TreeNode(nums[i]);
+                queue.offer(curNode.right);
             }
-
             i++;
         }
-
         return root;
+    }
+
+    public static void preOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.println(root.val);
+        preOrder(root.left);
+        preOrder(root.right);
     }
 
     public static void main(String[] args) {
         // 使用给定数组创建二叉树
         Integer[] nums = {3, 9, 20, null, null, 15, 7};
         TreeNode root = TreeNode.createBinaryTree(nums);
+        TreeNode.preOrder(root);
     }
 }
