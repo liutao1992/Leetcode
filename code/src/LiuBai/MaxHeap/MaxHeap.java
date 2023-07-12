@@ -114,6 +114,7 @@ public class MaxHeap<E extends Comparable<E>> {
             }
             // 比"较大的孩子"大
             if (data.get(k).compareTo(data.get(j)) >= 0) {
+                // 停止下沉
                 break;
             }
             swap(k, j);
