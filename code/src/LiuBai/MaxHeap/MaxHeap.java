@@ -101,25 +101,23 @@ public class MaxHeap<E extends Comparable<E>> {
      * @param k 下沉元素对应索引
      */
     private void sink(int k) {
-
-        // 判断数组是否越界
         while (leftChild(k) < data.size()) {
-            // 获取左孩子索引
-            int j = leftChild(k);
-
-            // 如果有右孩子并且左孩子比右孩子小
-            if (rightChild(k) < data.size() && data.get(j).compareTo(data.get(j + 1)) < 0) {
-                // j 指向右孩子
-                j = rightChild(k);
+            // 初始化索引
+            int maxChildIndex = leftChild(k);
+            // 判断是否存在右孩子，若存在右孩子，则比较左孩子与右孩子大小
+            if (rightChild(k) < data.size() && data.get(leftChild(k)).compareTo(data.get(rightChild(k))) < 0) {
+                // 若左孩子 小于 右孩子，则将右孩子索引赋值给maxChildIndex
+                maxChildIndex = rightChild(k);
             }
-            // 比"较大的孩子"大
-            if (data.get(k).compareTo(data.get(j)) >= 0) {
-                // 停止下沉
+            // 使用下沉节点与最大节点比较
+            // 若当前下沉节点 大于等于 最大节点，则停止下沉
+            if (data.get(k).compareTo(data.get(maxChildIndex)) >= 0) {
                 break;
             }
-            swap(k, j);
-            // k 指向交换后的新位置，继续比较
-            k = j;
+            // 互换节点位置
+            swap(k, maxChildIndex);
+            // 继续下一轮比较
+            k = maxChildIndex;
         }
     }
 
