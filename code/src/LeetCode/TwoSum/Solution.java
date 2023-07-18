@@ -1,6 +1,7 @@
 package LeetCode.TwoSum;
 
 /**
+ * 1. 两数之和
  * 给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，
  * 请你从数组中找出满足相加之和等于目标数 target 的两个数。
  * 如果设这两个数分别是 numbers[index1] 和 numbers[index2] ，
@@ -19,5 +20,7 @@ package LeetCode.TwoSum;
  */
 public class Solution {
 
-
+    public int[] twoSum(int[] nums, int target) {
+        return null;
+    }
 }
