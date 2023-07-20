@@ -49,16 +49,4 @@ public class Solution {
         return result;
     }
 
-    public static void main(String[] args) {
-        Integer[] nums = {3, 9, 20, null, null, 15, 7};
-        TreeNode root = TreeNode.createBinaryTree(nums);
-
-        Solution solution = new Solution();
-
-        List<List<Integer>> lists = solution.levelOrderBottom(root);
-
-        for (List<Integer> list : lists) {
-            System.out.println(list);
-        }
-    }
 }
