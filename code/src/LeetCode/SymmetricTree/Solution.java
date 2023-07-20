@@ -1,8 +1,7 @@
 package LeetCode.SymmetricTree;
 
-import LeetCode.TreeNode.TreeNode;
 
-import java.util.LinkedList;
+import LeetCode.TreeNode.TreeNode;
 
 /**
  * 101. 对称二叉树
@@ -10,8 +9,6 @@ import java.util.LinkedList;
  * @author liutao
  */
 public class Solution {
-
-    LinkedList<Integer> res = new LinkedList<>();
 
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
